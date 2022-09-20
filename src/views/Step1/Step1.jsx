@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Button from "@mui/material/Button";
 import styles from "./Step1.module.scss";
 import FormGroup from "@mui/material/FormGroup";
@@ -6,10 +6,12 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Popover from "@mui/material/Popover";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { useNavigate } from "react-router-dom";
 
 export const Step1 = () => {
   const [tcChecked, setTcChecked] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
 
   const handlePopoverOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -21,6 +23,10 @@ export const Step1 = () => {
 
   const open = Boolean(anchorEl);
 
+  const handleNavigate = useCallback(() => {
+    navigate("/create_password");
+  }, [navigate]);
+
   return (
     <div className={`${styles.container} ${styles.container_arrow_top}`}>
       <h1>Bienvenido/a a la Cuenta Corriente OpenClose</h1>
@@ -28,13 +34,11 @@ export const Step1 = () => {
       <p>Por favor, para continuar, marque la casilla y pulse "Siguiente"</p>
       <div className={styles.checkboxButtonContainer}>
         <FormGroup
+          row
           sx={{
             display: "flex",
-            flexDirection: "row",
             justifyContent: "space-between",
-            alignItems: "flex-start",
             width: "100%",
-            height: "100%",
           }}
         >
           <FormControlLabel
@@ -78,12 +82,14 @@ export const Step1 = () => {
             onClose={handlePopoverClose}
             disableRestoreFocus
           >
-            Afirmo que soy mayor de 18 años y acepto que traten mis datos según
-            la politica de protección de datos
+            <div style={{ padding: "1rem" }}>
+              Afirmo que soy mayor de 18 años y acepto que traten mis datos
+              según la politica de protección de datos
+            </div>
           </Popover>
           <Button
             variant="contained"
-            type="submit"
+            onClick={handleNavigate}
             endIcon={<ArrowForwardIosIcon />}
             disabled={!tcChecked}
           >
