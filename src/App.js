@@ -1,10 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import OpenbankLogo from "./assets/img/key_openbank.png";
 import { Step1, Step2, Step3 } from "./views";
-import { Layout } from "./components/common";
-
-import "./App.scss";
+import { Layout } from "./components/common/Layout";
 
 export const App = () => {
   return (

@@ -1,0 +1,26 @@
+@import '../../../styles/base.scss';
+
+
+.container{
+    background-color: $header-color;
+    height: 4rem;
+    color: $white;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.headerText{
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0;
+}
+.key_logo{
+    height: 2.5rem;
+}
+.step{
+    background-color: $black;
+}
+.step-active{
+    background-color: $primary-color;
+}
