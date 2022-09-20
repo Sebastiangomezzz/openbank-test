@@ -10,7 +10,7 @@ import KeyOpenBank from "../../../assets/img/key_openbank.png";
 export const Header = () => {
   return (
     <div className={styles.container}>
-      <img src={OpenbankLogo} alt="openbank-logo" />
+      <img className={styles.openbank_logo} src={OpenbankLogo} alt="openbank-logo" />
       <Box sx={{ width: "50%" }}>
         <Stepper activeStep={2}>
           <Step>

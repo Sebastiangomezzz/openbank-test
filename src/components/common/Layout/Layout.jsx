@@ -8,7 +8,7 @@ export const Layout = ({ children }) => {
       <header>
         <Header>Layout</Header>
       </header>
-      <body className={styles.container}>{children}</body>
+      <div className={styles.container}>{children}</div>
     </>
   );
 };

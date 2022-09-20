@@ -5,22 +5,16 @@
     background-color: $header-color;
     height: 4rem;
     color: $white;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.headerText{
-    font-size: 2rem;
-    font-weight: 600;
-    padding: 0;
-}
 .key_logo{
     height: 2.5rem;
+    margin-left: 3rem;
 }
-.step{
-    background-color: $black;
+.openbank_logo{
+    height: 1.2rem;
 }
-.step-active{
-    background-color: $primary-color;
-}
+

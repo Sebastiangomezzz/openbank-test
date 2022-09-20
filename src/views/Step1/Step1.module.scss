@@ -1,0 +1,23 @@
+@import '../../styles/base.scss';
+
+.container{
+    background-color: $white;
+    padding-top: 2rem;
+}
+.container_arrow_top{
+    position: relative;
+    background-color: $white;
+}
+.container_arrow_top::after{
+  content: " ";
+  position: absolute;
+  left: 23.2%;
+  top: -10px;
+  border-top: none;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid $white;
+}
+.checkboxButtonContainer{
+    margin-top: 4rem;
+}
