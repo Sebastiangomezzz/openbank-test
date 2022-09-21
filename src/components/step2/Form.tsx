@@ -9,6 +9,13 @@ import { submitForm } from "../../services/api";
 import styles from "./Form.module.scss";
 import { useDispatch } from "react-redux";
 import { incrementStep, decrementStep } from "../../features/stepperSlice";
+import { MockResult } from "../../services/api";
+
+interface FormData {
+  password: string;
+  repass: string;
+  password_hint: string;
+}
 
 export const Form = () => {
   const navigate = useNavigate();
@@ -20,10 +27,10 @@ export const Form = () => {
     watch,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: FormData) => {
     const { password } = data;
     submitForm(password)
-      .then((response) => {
+      .then((response: MockResult) => {
         response.status === 200 &&
           dispatch(incrementStep()) &&
           navigate("/feedback_OK");
@@ -43,6 +50,7 @@ export const Form = () => {
   return (
     <form
       style={{ width: "100%", marginTop: "2rem" }}
+      //@ts-ignore
       onSubmit={handleSubmit(onSubmit)}
     >
       <label htmlFor="password" hidden>
@@ -71,7 +79,7 @@ export const Form = () => {
           },
         })}
         error={!!errors?.password}
-        helperText={errors?.password ? errors.password.message : null}
+        helperText={errors?.password ? <>errors.password.message</> : null}
       />
 
       <label htmlFor="repass" hidden>
@@ -93,7 +101,7 @@ export const Form = () => {
           },
         })}
         error={!!errors?.repass}
-        helperText={errors?.repass ? errors.repass.message : null}
+        helperText={errors?.repass ? <>errors.repass.message</> : null}
       />
       <label htmlFor="password_hint" hidden>
         Introduce una pista para recordar tu contraseña
@@ -117,7 +125,7 @@ export const Form = () => {
           variant="contained"
           startIcon={<ArrowBackIosIcon />}
           onClick={handleNavigateBack}
-          color="neutral"
+          color="secondary"
         >
           Anterior
         </Button>

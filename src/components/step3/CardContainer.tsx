@@ -9,7 +9,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { resetSteps } from "../../features/stepperSlice";
 
-export const CardContainer = ({ error }) => {
+interface CardContainerProps {
+  error?: boolean;
+}
+
+export const CardContainer = ({ error }:CardContainerProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

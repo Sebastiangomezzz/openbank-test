@@ -10,12 +10,15 @@ import { useDispatch } from "react-redux";
 import { incrementStep } from "../../features/stepperSlice";
 
 export const CheckboxForm = () => {
-  const [termsAndConditionsChecked, setTermsAndConditionsChecked] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [termsAndConditionsChecked, setTermsAndConditionsChecked] =
+    useState(false);
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const navigate = useNavigate();
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  const handlePopoverOpen = (event) => {
+  const handlePopoverOpen = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -29,7 +32,7 @@ export const CheckboxForm = () => {
     dispatch(incrementStep());
     navigate("/create_password");
   }, [navigate, dispatch]);
-    
+
   return (
     <FormGroup
       row
@@ -43,7 +46,6 @@ export const CheckboxForm = () => {
         control={
           <Checkbox
             id="conditions-checkbox"
-            type="checkbox"
             checked={termsAndConditionsChecked}
             onChange={(e) => setTermsAndConditionsChecked(e.target.checked)}
           />

@@ -9,7 +9,7 @@ import KeyOpenBank from "../../../assets/img/key_openbank.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 
-export const Header = () => {
+export const Header = (): JSX.Element => {
   const step = useSelector((state: RootState) => state.stepper.value);
 
   return (

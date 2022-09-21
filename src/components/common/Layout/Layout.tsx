@@ -2,11 +2,14 @@ import React from "react";
 import { Header } from "../Header/Header";
 import styles from "./Layout.module.scss";
 
-export const Layout = ({ children }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+export const Layout = ({ children }: LayoutProps): JSX.Element => {
   return (
     <>
       <header>
-        <Header>Layout</Header>
+        <Header/>
       </header>
       <div className={styles.container}>{children}</div>
     </>
