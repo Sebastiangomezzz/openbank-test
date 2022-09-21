@@ -6,12 +6,17 @@ import Button from "@mui/material/Button";
 import WarningAmberTwoToneIcon from "@mui/icons-material/WarningAmberTwoTone";
 import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { resetSteps } from "../../features/stepperSlice";
 
 export const CardContainer = ({ error }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleNavigateBack = useCallback(() => {
+    dispatch(resetSteps());
     navigate("/");
-  }, [navigate]);
+  }, [navigate, dispatch]);
 
   return (
     <Card>

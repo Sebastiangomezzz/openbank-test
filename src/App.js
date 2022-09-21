@@ -1,12 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Step1, Step2, Step3OK, Step3KO } from "./views";
-import { Layout } from "./components/common/Layout";
+//MaterialUI
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./styles/materialUIOverrides";
+//Redux
+import { Provider } from "react-redux";
+import { store } from "./store";
+//Views
+import { Step1, Step2, Step3OK, Step3KO } from "./views";
+//Global Layout
+import { Layout } from "./components/common/Layout";
 
 export const App = () => {
   return (
+    <Provider store={store}>
     <ThemeProvider theme={theme}>
       <Layout>
         <Router>
@@ -18,6 +25,7 @@ export const App = () => {
           </Routes>
         </Router>
       </Layout>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Provider>
   );
 };

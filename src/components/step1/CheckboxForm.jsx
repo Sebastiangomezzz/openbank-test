@@ -1,18 +1,19 @@
 import React, { useCallback, useState } from "react";
-
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
-
 import Popover from "@mui/material/Popover";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { incrementStep } from "../../features/stepperSlice";
 
 export const CheckboxForm = () => {
   const [termsAndConditionsChecked, setTermsAndConditionsChecked] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
+   const dispatch = useDispatch();
 
   const handlePopoverOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -25,8 +26,9 @@ export const CheckboxForm = () => {
   const open = Boolean(anchorEl);
 
   const handleNavigate = useCallback(() => {
+    dispatch(incrementStep());
     navigate("/create_password");
-  }, [navigate]);
+  }, [navigate, dispatch]);
     
   return (
     <FormGroup
