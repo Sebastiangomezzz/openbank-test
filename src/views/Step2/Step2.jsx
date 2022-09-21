@@ -6,6 +6,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { submitForm } from "../../services/api";
 
 export const Step2 = () => {
   const navigate = useNavigate();
@@ -17,16 +18,20 @@ export const Step2 = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    navigate("/feedback");
+    const { password } = data;
+    submitForm(password)
+      .then((response) => {
+        response.status === 200 && navigate("/feedback_OK");
+      })
+      .catch((error) => {
+        error.status === 401 && navigate("/feedback_KO");
+      });
   };
 
   const handleNavigateBack = useCallback(() => {
     navigate("/");
   }, [navigate]);
-  // const handleNavigateForward = useCallback(() => {
-  //
-  // }, [navigate]);
+
   return (
     <div className={`${styles.container} ${styles.container_arrow_top}`}>
       <h1>Creación de password</h1>
@@ -54,7 +59,6 @@ export const Step2 = () => {
               message: "La contraseña no debe sobrepasar los 24 caracteres",
             },
             pattern: {
-              //generate a regexp to check if the password has at least one number and one uppercase letter
               value: /^(?=.*[A-Z])(?=.*[0-9])/,
               message:
                 "La contraseña debe contener al menos una letra mayúscula y un número",
@@ -64,16 +68,16 @@ export const Step2 = () => {
           helperText={errors?.password ? errors.password.message : null}
         />
 
-        <label htmlFor="password_repeat" hidden>
+        <label htmlFor="repass" hidden>
           Repite la contraseña
         </label>
         <TextField
-          id="password_repeat"
+          id="repass"
           type="password"
           variant="outlined"
           sx={{ marginLeft: "1rem" }}
           placeholder="Repite la contraseña"
-          {...register("password_repeat", {
+          {...register("repass", {
             validate: (value) => {
               if (value.length >= 8) {
                 return (
@@ -82,10 +86,8 @@ export const Step2 = () => {
               }
             },
           })}
-          error={!!errors?.password_repeat}
-          helperText={
-            errors?.password_repeat ? errors.password_repeat.message : null
-          }
+          error={!!errors?.repass}
+          helperText={errors?.repass ? errors.repass.message : null}
         />
         <label htmlFor="password_hint" hidden>
           Introduce una pista para recordar tu contraseña
