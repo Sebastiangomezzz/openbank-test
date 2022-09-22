@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //MaterialUI
 import { ThemeProvider } from "@mui/material";
-import { theme } from "./styles/materialUIOverrides";
+import { themeWithLocale } from "./styles/materialUIOverrides";
 //Redux
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -14,17 +14,17 @@ import { Layout } from "./components/common/Layout";
 export const App = () => {
   return (
     <Provider store={store}>
-    <ThemeProvider theme={theme}>
-      <Layout>
-        <Router>
-          <Routes>
-            <Route path="/" element={<Step1 />} />
-            <Route path="/create_password" element={<Step2 />} />
-            <Route path="/feedback_OK" element={<Step3OK />} />
-            <Route path="/feedback_KO" element={<Step3KO />} />
-          </Routes>
-        </Router>
-      </Layout>
+      <ThemeProvider theme={themeWithLocale}>
+        <Layout>
+          <Router>
+            <Routes>
+              <Route path="/" element={<Step1 />} />
+              <Route path="/create_password" element={<Step2 />} />
+              <Route path="/feedback_OK" element={<Step3OK />} />
+              <Route path="/feedback_KO" element={<Step3KO />} />
+            </Routes>
+          </Router>
+        </Layout>
       </ThemeProvider>
     </Provider>
   );

@@ -10,6 +10,7 @@ import styles from "./Form.module.scss";
 import { useDispatch } from "react-redux";
 import { incrementStep, decrementStep } from "../../features/stepperSlice";
 import { MockResult } from "../../services/api";
+import { useTranslation } from "react-i18next";
 
 interface FormData {
   password: string;
@@ -26,6 +27,7 @@ export const Form = () => {
     formState: { errors },
     watch,
   } = useForm();
+  const { t } = useTranslation("translation");
 
   const onSubmit = (data: FormData) => {
     const { password } = data;
@@ -54,70 +56,75 @@ export const Form = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <label htmlFor="password" hidden>
-        Introduce una contraseña
+        {t("step2.passwordInput.label")}
       </label>
       <TextField
         id="password"
         type="password"
         variant="outlined"
         sx={{ marginRight: "1rem", width: "14rem" }}
-        placeholder="Introduce una contraseña"
+        placeholder={t("step2.passwordInput.label")}
         {...register("password", {
-          required: "Este campo es obligatorio",
+          required: t("step2.passwordInput.required"),
           minLength: {
             value: 8,
-            message: "La contraseña tiene que tener 8 caracteres como mínimo",
+            message: t("step2.passwordInput.minLength"),
           },
           maxLength: {
             value: 24,
-            message: "La contraseña no debe sobrepasar los 24 caracteres",
+            message: t("step2.passwordInput.maxLength"),
           },
           pattern: {
-            value: /^(?=.*[A-Z])(?=.*[0-9])/,
-            message:
-              "La contraseña debe contener al menos una letra mayúscula y un número",
+            value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])/,
+            message: t("step2.passwordInput.pattern"),
           },
         })}
         error={!!errors?.password}
-        helperText={errors?.password ? <>errors.password.message</> : null}
+        helperText={
+          errors?.password ? <>{errors?.password?.message?.toString()}</> : null
+        }
       />
 
       <label htmlFor="repass" hidden>
-        Repite la contraseña
+        {t("step2.repassInput.label")}
       </label>
       <TextField
         id="repass"
         type="password"
         variant="outlined"
         sx={{ marginLeft: "1rem" }}
-        placeholder="Repite la contraseña"
+        placeholder={t("step2.repassInput.label")}
         {...register("repass", {
           validate: (value) => {
             if (value.length >= 8) {
               return (
-                value === watch("password") || "Las contraseñas no coinciden"
+                value === watch("password") || `${t("step2.repassInput.match")}`
               );
             }
           },
         })}
         error={!!errors?.repass}
-        helperText={errors?.repass ? <>errors.repass.message</> : null}
+        helperText={
+          errors?.repass ? <>{errors?.repass?.message?.toString()}</> : null
+        }
       />
       <label htmlFor="password_hint" hidden>
-        Introduce una pista para recordar tu contraseña
+        {t("step2.hintInput.label")}
       </label>
       <TextField
         id="password_hint"
         type="text"
         variant="outlined"
         sx={{ marginTop: "1rem", width: "100%" }}
-        placeholder="Crea una pista para recordar tu contraseña"
-        {...register("password_hint", { maxLength: 255 })}
+        placeholder={t("step2.hintInput.label")}
+        {...register("password_hint", {
+          maxLength: { value: 255, message: t("step2.hintInput.maxLength") },
+        })}
         error={!!errors?.password_hint}
         helperText={
-          errors?.password_hint
-            ? "La pista puede tener, como máximo, 255 caracteres"
-            : null
+          errors?.password_hint ? (
+            <>{errors?.password_hint?.message?.toString()}</>
+          ) : null
         }
       />
       <div className={styles.buttonContainer}>
@@ -127,14 +134,14 @@ export const Form = () => {
           onClick={handleNavigateBack}
           color="secondary"
         >
-          Anterior
+          {t("step2.buttonPrev")}
         </Button>
         <Button
           variant="contained"
           type="submit"
           endIcon={<ArrowForwardIosIcon />}
         >
-          Siguiente
+          {t("step2.buttonNext")}
         </Button>
       </div>
     </form>

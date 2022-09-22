@@ -8,13 +8,16 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { incrementStep } from "../../features/stepperSlice";
+import { useTranslation } from "react-i18next";
 
 export const CheckboxForm = () => {
   const [termsAndConditionsChecked, setTermsAndConditionsChecked] =
-    useState(false);
+    useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation("translation");
+
 
   const handlePopoverOpen = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -52,13 +55,13 @@ export const CheckboxForm = () => {
         }
         label={
           <span>
-            Acepto las{" "}
+            {t("step1.checkbox1")}{" "}
             <span
               style={{ color: "#FF0049" }}
               onMouseEnter={handlePopoverOpen}
               onMouseLeave={handlePopoverClose}
             >
-              Condiciones del servicio
+              {t("step1.checkbox2")}
             </span>
           </span>
         }
@@ -82,10 +85,7 @@ export const CheckboxForm = () => {
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <div style={{ padding: "1rem" }}>
-          Afirmo que soy mayor de 18 años y acepto que traten mis datos según la
-          politica de protección de datos
-        </div>
+        <div style={{ padding: "1rem" }}>{t("step1.popover")}</div>
       </Popover>
       <Button
         variant="contained"
@@ -93,7 +93,7 @@ export const CheckboxForm = () => {
         endIcon={<ArrowForwardIosIcon />}
         disabled={!termsAndConditionsChecked}
       >
-        Siguiente
+        {t("step1.buttonNext")}
       </Button>
     </FormGroup>
   );
