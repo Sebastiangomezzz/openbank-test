@@ -8,6 +8,7 @@ import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { resetSteps } from "../../features/stepperSlice";
+import { useTranslation } from 'react-i18next';
 
 interface CardContainerProps {
   error?: boolean;
@@ -16,6 +17,7 @@ interface CardContainerProps {
 export const CardContainer = ({ error }:CardContainerProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation('translation');
 
   const handleNavigateBack = useCallback(() => {
     dispatch(resetSteps());
@@ -34,22 +36,14 @@ export const CardContainer = ({ error }:CardContainerProps) => {
           )
         }
         title={
-          error ? (
-            <h1>Ha habido un error</h1>
-          ) : (
-            <h1>¡Tu nueva contraseña se ha creado con éxito!</h1>
-          )
+          error ? <h1>{t("step3KO.title")}</h1> : <h1>{t("step3OK.title")}</h1>
         }
-        subheader={
-          error
-            ? "No hemos podido crear tu contraseña. Inténtalo más tarde"
-            : "Ahora ya podrás acceder a tu cuenta"
-        }
+        subheader={error ? t("step3KO.subheader") : t("step3OK.subheader")}
       />
       <hr />
       <CardActions sx={{ display: "flex", flexDirection: "row-reverse" }}>
         <Button size="small" onClick={handleNavigateBack}>
-          {error ? "Volver al inicio" : "Acceder"}
+          {error ? t("step3KO.button") : t("step3OK.button")}
         </Button>
       </CardActions>
     </Card>
