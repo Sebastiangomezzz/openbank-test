@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //MaterialUI
 import { ThemeProvider } from "@mui/material";
-import { themeWithLocale } from "./styles/materialUIOverrides";
+import { theme } from "./styles/materialUIOverrides";
 //Redux
 import { Provider } from "react-redux";
 import { store } from "./store";
@@ -14,7 +14,7 @@ import { Layout } from "./components/common/Layout";
 export const App = () => {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={themeWithLocale}>
+      <ThemeProvider theme={theme}>
         <Layout>
           <Router>
             <Routes>

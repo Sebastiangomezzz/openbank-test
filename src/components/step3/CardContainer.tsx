@@ -27,6 +27,7 @@ export const CardContainer = ({ error }:CardContainerProps) => {
   return (
     <Card>
       <CardHeader
+        sx={{height:'8rem'}}
         component="div"
         avatar={
           error ? (
@@ -42,7 +43,7 @@ export const CardContainer = ({ error }:CardContainerProps) => {
       />
       <hr />
       <CardActions sx={{ display: "flex", flexDirection: "row-reverse" }}>
-        <Button size="small" onClick={handleNavigateBack}>
+        <Button variant='contained' onClick={handleNavigateBack}>
           {error ? t("step3KO.button") : t("step3OK.button")}
         </Button>
       </CardActions>
