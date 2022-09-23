@@ -26,6 +26,7 @@ export const ButtonBox = () => {
   return (
     <Box className={styles.buttonContainer}>
       <Button
+        className={styles.button}
         variant="contained"
         startIcon={<ArrowBackIosIcon />}
         onClick={handleNavigateBack}
@@ -34,6 +35,7 @@ export const ButtonBox = () => {
         {t("step2.buttonPrev")}
       </Button>
       <Button
+        className={styles.button}
         variant="contained"
         type="submit"
         endIcon={<ArrowForwardIosIcon />}

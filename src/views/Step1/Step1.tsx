@@ -8,8 +8,9 @@ export const Step1 = () => {
   
   return (
     <div className={`${styles.container} ${styles.container_arrow_top}`}>
-      <h1>{t("step1.title")}</h1>
+      <h1 className={styles.title}>{t("step1.title")}</h1>
       <p>{t("step1.text1")}</p>
+      <br />
       <p>{t("step1.text2")}</p>
       <div className={styles.checkboxButtonContainer}>
         <CheckboxForm />

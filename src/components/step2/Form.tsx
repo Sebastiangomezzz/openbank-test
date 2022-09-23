@@ -82,6 +82,7 @@ export const Form = () => {
               },
             })}
             error={!!errors?.password}
+            FormHelperTextProps={{ style: { fontSize: "1rem" } }}
             helperText={
               errors?.password ? (
                 <>{errors?.password?.message?.toString()}</>
@@ -109,6 +110,7 @@ export const Form = () => {
               },
             })}
             error={!!errors?.repass}
+            FormHelperTextProps={{ style: { fontSize: "1rem" } }}
             helperText={
               errors?.repass ? <>{errors?.repass?.message?.toString()}</> : null
             }
@@ -128,6 +130,7 @@ export const Form = () => {
             maxLength: { value: 255, message: t("step2.hintInput.maxLength") },
           })}
           error={!!errors?.password_hint}
+          FormHelperTextProps={{ style: { fontSize: "1rem" } }}
           helperText={
             errors?.password_hint ? (
               <>{errors?.password_hint?.message?.toString()}</>

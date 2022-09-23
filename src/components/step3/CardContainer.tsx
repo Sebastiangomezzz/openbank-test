@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { resetSteps } from "../../features/stepperSlice";
 import { useTranslation } from 'react-i18next';
-
+import styles from './CardContainer.module.scss';
 interface CardContainerProps {
   error?: boolean;
 }
@@ -25,25 +25,31 @@ export const CardContainer = ({ error }:CardContainerProps) => {
   }, [navigate, dispatch]);
 
   return (
-    <Card>
+    <Card className={styles.container}>
       <CardHeader
-        sx={{height:'8rem'}}
+        className={styles.cardHeader}
         component="div"
         avatar={
           error ? (
-            <WarningAmberTwoToneIcon sx={{ color: "red", fontSize: 50 }} />
+            <WarningAmberTwoToneIcon className={styles.iconWarning} />
           ) : (
-            <CheckCircleTwoToneIcon sx={{ color: "green", fontSize: 50 }} />
+            <CheckCircleTwoToneIcon className={styles.iconCheck} />
           )
         }
         title={
           error ? <h1>{t("step3KO.title")}</h1> : <h1>{t("step3OK.title")}</h1>
         }
-        subheader={error ? t("step3KO.subheader") : t("step3OK.subheader")}
+        subheader={
+          error ? (
+            <p>{t("step3KO.subheader")}</p>
+          ) : (
+            <p>{t("step3OK.subheader")}</p>
+          )
+        }
       />
       <hr />
-      <CardActions sx={{ display: "flex", flexDirection: "row-reverse" }}>
-        <Button variant='contained' onClick={handleNavigateBack}>
+      <CardActions className={styles.cardActions}>
+        <Button variant="contained" onClick={handleNavigateBack}>
           {error ? t("step3KO.button") : t("step3OK.button")}
         </Button>
       </CardActions>

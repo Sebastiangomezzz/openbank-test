@@ -41,7 +41,7 @@ i18n
               match: "Las contraseñas no coinciden",
             },
             hintInput: {
-              label: "Introduce una pista para recordar tu contraseña",
+              label: "Introduce una pista para recordar tu contraseña (Opcional)",
               maxLength: "La pista debe tener menos de 255 caracteres",
             },
             buttonPrev: "Anterior",
@@ -88,7 +88,7 @@ i18n
               match: "The passwords do not match",
             },
             hintInput: {
-              label: "Create a hint to remember your password",
+              label: "Create a hint to remember your password (Optional)",
               maxLength: "The hint must be less than 255 characters long",
             },
             buttonPrev: "Previous",

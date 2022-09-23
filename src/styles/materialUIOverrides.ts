@@ -12,6 +12,7 @@ export const theme = createTheme({
   typography: {
     button: {
       textTransform: "none",
+      fontSize: '1.5rem',
     },
     fontFamily: "Quicksand",
   },
@@ -28,9 +29,11 @@ export const theme = createTheme({
     },
     MuiStepConnector: {
       styleOverrides: {
-        active: {
-          "& $line": {
-            borderColor: "#FF0049",
+        root: {
+          "&.Mui-active": {
+            "& $line": {
+              borderColor: "#FF0049",
+            },
           },
         },
       },
@@ -41,7 +44,7 @@ export const theme = createTheme({
           margin: 0,
           height: 0,
         },
-      }
+      },
     },
   },
 });

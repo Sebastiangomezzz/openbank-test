@@ -18,7 +18,6 @@ export const CheckboxForm = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation("translation");
 
-
   const handlePopoverOpen = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -55,13 +54,13 @@ export const CheckboxForm = () => {
         }
         label={
           <span>
-            {t("step1.checkbox1")}{" "}
+            <p>{t("step1.checkbox1")} </p>
             <span
               style={{ color: "#FF0049" }}
               onMouseEnter={handlePopoverOpen}
               onMouseLeave={handlePopoverClose}
             >
-              {t("step1.checkbox2")}
+              <p>{t("step1.checkbox2")}</p>
             </span>
           </span>
         }
@@ -75,17 +74,19 @@ export const CheckboxForm = () => {
         open={open}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
+          vertical: "top",
+          horizontal: "center",
         }}
         transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
+          vertical: "center",
+          horizontal: "right",
         }}
         onClose={handlePopoverClose}
         disableRestoreFocus
       >
-        <div style={{ padding: "1rem" }}>{t("step1.popover")}</div>
+        <div style={{ padding: "1rem 2rem" }}>
+          <p>{t("step1.popover")}</p>
+        </div>
       </Popover>
       <Button
         variant="contained"

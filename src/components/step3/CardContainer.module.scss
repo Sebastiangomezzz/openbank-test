@@ -1,0 +1,22 @@
+.container{
+    margin-top: 5rem;
+}
+.cardHeader{
+    height: 100%;
+    width: 100%;
+}
+.iconWarning{
+    color: red;
+    font-size: 80px;
+    margin: 0 3rem 0 1rem;
+}
+.iconCheck{
+    color: green;
+    font-size: 80px;
+    margin: 0 3rem 0 1rem;
+}
+.cardActions{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 1rem;
+}
