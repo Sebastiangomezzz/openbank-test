@@ -8,7 +8,7 @@ export const Step2 = () => {
 
   return (
     <div className={`${styles.container} ${styles.container_arrow_top}`}>
-      <h1>{t("step2.title")}</h1>
+      <h1 className={styles.title}>{t("step2.title")}</h1>
       <Form />
     </div>
   );

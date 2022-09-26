@@ -37,7 +37,11 @@ export const CardContainer = ({ error }:CardContainerProps) => {
           )
         }
         title={
-          error ? <h1>{t("step3KO.title")}</h1> : <h1>{t("step3OK.title")}</h1>
+          error ? (
+            <h1 className={styles.title}>{t("step3KO.title")}</h1>
+          ) : (
+            <h1 className={styles.title}>{t("step3OK.title")}</h1>
+          )
         }
         subheader={
           error ? (

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 //Material UI
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import Tooltip from "@mui/material/Tooltip";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 //Types
 import { MockResult } from "../../services/api";
 //api
@@ -18,7 +20,6 @@ import { incrementStep } from "../../features/stepperSlice";
 //Styles
 import styles from "./Form.module.scss";
 
-
 interface FormData {
   password: string;
   repass: string;
@@ -28,7 +29,7 @@ interface FormData {
 export const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const {
     register,
     handleSubmit,
@@ -57,7 +58,7 @@ export const Form = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <Box className={styles.inputsContainer}>
-        <Box className={styles.inputBox}>
+        <Box className={styles.inputBox1}>
           <label className={styles.inputLabel} htmlFor="password">
             {t("step2.passwordInput.label")}
           </label>
@@ -119,7 +120,20 @@ export const Form = () => {
       </Box>
       <Box className={styles.inputHintBox}>
         <label className={styles.inputLabel} htmlFor="password_hint">
-          {t("step2.hintInput.label")}
+          {t("step2.hintInput.label")}{" "}
+          <Tooltip
+            arrow
+            title={
+              <div className={styles.tooltip}>
+                <p className={styles.tooltipText}>
+                  {t("step2.hintInput.tooltip")}
+                </p>
+              </div>
+            }
+            placement="right"
+          >
+            <InfoOutlinedIcon className={styles.tooltipIcon} />
+          </Tooltip>
         </label>
         <TextField
           id="password_hint"

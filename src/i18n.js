@@ -42,6 +42,7 @@ i18n
             },
             hintInput: {
               label: "Introduce una pista para recordar tu contraseña (Opcional)",
+              tooltip: "La pista debe tener como máximo 255 caracteres",
               maxLength: "La pista debe tener menos de 255 caracteres",
             },
             buttonPrev: "Anterior",
@@ -89,6 +90,7 @@ i18n
             },
             hintInput: {
               label: "Create a hint to remember your password (Optional)",
+              tooltip: "The hint must be less than 255 characters long",
               maxLength: "The hint must be less than 255 characters long",
             },
             buttonPrev: "Previous",

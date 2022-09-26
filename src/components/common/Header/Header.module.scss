@@ -9,11 +9,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 .key_logo{
     height: 6rem;
     margin-left: 3rem;
+    @media (max-width: 1200px){
+        height: 4rem;
+    }
+    @media (max-width: 900px){
+        height: 3rem;
+        margin-left: 2rem;
+    }
 }
 .openbank_logo{
     height: 2rem;
+    @media (max-width: 1200px){
+        height: 1.5rem;
+    }
 }

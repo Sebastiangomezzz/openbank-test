@@ -17,27 +17,6 @@ export const theme = createTheme({
     fontFamily: "Quicksand",
   },
   components: {
-    //change the color of the icon in stepper when active
-    MuiStepIcon: {
-      styleOverrides: {
-        root: {
-          "&$active": {
-            color: "#FF0049",
-          },
-        },
-      },
-    },
-    MuiStepConnector: {
-      styleOverrides: {
-        root: {
-          "&.Mui-active": {
-            "& $line": {
-              borderColor: "#FF0049",
-            },
-          },
-        },
-      },
-    },
     MuiFormHelperText: {
       styleOverrides: {
         root: {

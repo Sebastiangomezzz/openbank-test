@@ -1,5 +1,16 @@
 @import '../../styles/base.scss';
 
+.title{
+    
+    @media (max-width: 1265px) {
+        margin-bottom: 2rem;
+        font-size: $title-mid-size;
+    }
+    @media (max-width: 900px) {
+        margin-bottom: 0.5rem;
+        font-size: $title-mid-size;
+    }
+}
 .container{
     background-color: $white;
     padding-top: 1rem;
@@ -11,8 +22,8 @@
 .container_arrow_top::after{
   content: " ";
   position: absolute;
-  left: 48.7%;
-  top: -10px;
+  left: 48%;
+  top: -15px;
   border-top: none;
   border-right: 15px solid transparent;
   border-left: 15px solid transparent;

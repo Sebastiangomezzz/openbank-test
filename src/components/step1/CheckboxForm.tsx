@@ -1,34 +1,28 @@
 import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
+//Material UI
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
-import Popover from "@mui/material/Popover";
+import Tooltip from "@mui/material/Tooltip";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { useNavigate } from "react-router-dom";
+//redux
 import { useDispatch } from "react-redux";
 import { incrementStep } from "../../features/stepperSlice";
+//locale
 import { useTranslation } from "react-i18next";
+//Styles
+import styles from "./CheckboxForm.module.scss";
 
 export const CheckboxForm = () => {
   const [termsAndConditionsChecked, setTermsAndConditionsChecked] =
     useState<boolean>(false);
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation("translation");
 
-  const handlePopoverOpen = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
+ 
 
   const handleNavigate = useCallback(() => {
     dispatch(incrementStep());
@@ -36,15 +30,9 @@ export const CheckboxForm = () => {
   }, [navigate, dispatch]);
 
   return (
-    <FormGroup
-      row
-      sx={{
-        display: "flex",
-        justifyContent: "space-between",
-        width: "100%",
-      }}
-    >
+    <FormGroup className={styles.formGroup}>
       <FormControlLabel
+        className={styles.formControlLabel}
         control={
           <Checkbox
             id="conditions-checkbox"
@@ -53,42 +41,24 @@ export const CheckboxForm = () => {
           />
         }
         label={
-          <span>
+          <div className={styles.checkBoxLabelContainer}>
             <p>{t("step1.checkbox1")} </p>
-            <span
-              style={{ color: "#FF0049" }}
-              onMouseEnter={handlePopoverOpen}
-              onMouseLeave={handlePopoverClose}
+            <Tooltip
+              arrow
+              title={
+                <div className={styles.tooltip}>
+                  <p className={styles.tooltipText}>{t("step1.popover")}</p>
+                </div>
+              }
+              placement="right"
             >
-              <p>{t("step1.checkbox2")}</p>
-            </span>
-          </span>
+              <p className={styles.tooltipInnerText}>{t("step1.checkbox2")}</p>
+            </Tooltip>
+          </div>
         }
       />
-      <Popover
-        id="mouse-over-popover"
-        sx={{
-          pointerEvents: "none",
-          paddingTop: "2rem",
-        }}
-        open={open}
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "center",
-          horizontal: "right",
-        }}
-        onClose={handlePopoverClose}
-        disableRestoreFocus
-      >
-        <div style={{ padding: "1rem 2rem" }}>
-          <p>{t("step1.popover")}</p>
-        </div>
-      </Popover>
       <Button
+        className={styles.button}
         variant="contained"
         onClick={handleNavigate}
         endIcon={<ArrowForwardIosIcon />}
