@@ -34,10 +34,33 @@ label{
   margin: 0;
   font-size: 1.5rem;
 }
-.MuiStepConnector-line.MuiStepConnector-lineHorizontal.css-z7uhs0-MuiStepConnector-line{
-  border:1px solid black;
+.MuiStepConnector-line.MuiStepConnector-lineHorizontal.css-z7uhs0-MuiStepConnector-line {
+  border:0.05px solid black;
+}
+.MuiStepConnector-root.MuiStepConnector-horizontal.Mui-active.css-j5w0w9-MuiStepConnector-root{
+  border: 1px solid #FF0049;
 }
 .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiStepIcon-root.Mui-completed.css-1m13l5j-MuiSvgIcon-root-MuiStepIcon-root{
-  color: red;
-  font-size: 2rem;
+  color: #FF0049;
+  font-size: 1.7rem;
+}
+.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiStepIcon-root.Mui-active.css-1m13l5j-MuiSvgIcon-root-MuiStepIcon-root{
+  color: #000000;
+  font-size: 2.2rem;
+}
+.MuiStep-root.MuiStep-horizontal.css-1bw0nnu-MuiStep-root{
+  margin: 0;
+  padding: 0;
+}
+.MuiStepLabel-iconContainer.Mui-active.css-vnkopk-MuiStepLabel-iconContainer{
+  margin: 0;
+  padding: 0;
+}
+.MuiStepLabel-iconContainer.Mui-disabled.css-vnkopk-MuiStepLabel-iconContainer{
+  margin: 0;
+  padding: 0;
+}
+.MuiStepLabel-iconContainer.Mui-completed.css-vnkopk-MuiStepLabel-iconContainer{
+  margin: 0;
+  padding: 0;
 }
