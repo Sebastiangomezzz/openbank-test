@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 //Material UI
 import TextField from "@mui/material/TextField";
@@ -29,7 +29,7 @@ interface FormData {
 export const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -39,6 +39,7 @@ export const Form = () => {
   const { t } = useTranslation("translation");
 
   const onSubmit = (data: FormData) => {
+    setLoading(true);
     const { password } = data;
     submitForm(password)
       .then((response: MockResult) => {
@@ -152,7 +153,7 @@ export const Form = () => {
           }
         />
       </Box>
-      <ButtonBox />
+      <ButtonBox loading={loading} />
     </form>
   );
 };

@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 //Material UI
 import Button from "@mui/material/Button";
+import LoadingButton from "@mui/lab/LoadingButton";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Box from "@mui/material/Box";
@@ -12,8 +13,10 @@ import { useDispatch } from "react-redux";
 import { decrementStep } from "../../features/stepperSlice";
 //Styles
 import styles from "./ButtonBox.module.scss";
-
-export const ButtonBox = () => {
+interface ButtonBoxProps {
+  loading: boolean;
+}
+export const ButtonBox = ({loading}:ButtonBoxProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation("translation");
@@ -34,14 +37,16 @@ export const ButtonBox = () => {
       >
         {t("step2.buttonPrev")}
       </Button>
-      <Button
+      <LoadingButton
+        loading={loading}
+        loadingPosition="end"
         className={styles.button}
         variant="contained"
         type="submit"
         endIcon={<ArrowForwardIosIcon />}
       >
         {t("step2.buttonNext")}
-      </Button>
+      </LoadingButton>
     </Box>
   );
 };
