@@ -35,6 +35,7 @@ export const CheckboxForm = () => {
         className={styles.formControlLabel}
         control={
           <Checkbox
+            aria-label="terms and conditions checkbox"
             id="conditions-checkbox"
             checked={termsAndConditionsChecked}
             onChange={(e) => setTermsAndConditionsChecked(e.target.checked)}
@@ -44,6 +45,7 @@ export const CheckboxForm = () => {
           <div className={styles.checkBoxLabelContainer}>
             <p>{t("step1.checkbox1")} </p>
             <Tooltip
+              aria-label="terms and conditions tooltip"
               arrow
               title={
                 <div className={styles.tooltip}>

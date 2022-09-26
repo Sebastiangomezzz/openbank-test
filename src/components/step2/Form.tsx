@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //Material UI
 import TextField from "@mui/material/TextField";
@@ -55,12 +55,17 @@ export const Form = () => {
   };
   return (
     <form
+      aria-label="form"
       //@ts-ignore
       onSubmit={handleSubmit(onSubmit)}
     >
       <Box className={styles.inputsContainer}>
         <Box className={styles.inputBox1}>
-          <label className={styles.inputLabel} htmlFor="password">
+          <label
+            className={styles.inputLabel}
+            htmlFor="password"
+            aria-label="password"
+          >
             {t("step2.passwordInput.label")}
           </label>
           <TextField
@@ -68,6 +73,7 @@ export const Form = () => {
             type="password"
             variant="outlined"
             className={styles.textField}
+            
             {...register("password", {
               required: t("step2.passwordInput.required"),
               minLength: {
@@ -99,6 +105,7 @@ export const Form = () => {
           <TextField
             id="repass"
             type="password"
+            aria-label="repeat-password"
             variant="outlined"
             className={styles.textField}
             {...register("repass", {
@@ -139,6 +146,7 @@ export const Form = () => {
         <TextField
           id="password_hint"
           type="text"
+          aria-label="password-hint"
           variant="outlined"
           sx={{ width: "100%" }}
           {...register("password_hint", {
