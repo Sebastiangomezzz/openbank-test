@@ -34,11 +34,20 @@ label{
   margin: 0;
   font-size: 1.5rem;
 }
-.MuiStepConnector-line.MuiStepConnector-lineHorizontal.css-z7uhs0-MuiStepConnector-line {
-  border:0.05px solid black;
+.MuiStepConnector-line.MuiStepConnector-lineHorizontal.css-z7uhs0-MuiStepConnector-line{
+  display:none;
+}
+.MuiStepConnector-root.MuiStepConnector-horizontal.Mui-disabled.css-j5w0w9-MuiStepConnector-root {
+  border:1.5px solid black;
+  background-color: #000000;
 }
 .MuiStepConnector-root.MuiStepConnector-horizontal.Mui-active.css-j5w0w9-MuiStepConnector-root{
-  border: 1px solid #FF0049;
+  border: 2px solid #FF0049;
+  background-color: #FF0049;
+}
+.MuiStepConnector-root.MuiStepConnector-horizontal.Mui-completed.css-j5w0w9-MuiStepConnector-root{
+  border: 2px solid #FF0049;
+  background-color: #FF0049;
 }
 .MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.MuiStepIcon-root.Mui-completed.css-1m13l5j-MuiSvgIcon-root-MuiStepIcon-root{
   color: #FF0049;
