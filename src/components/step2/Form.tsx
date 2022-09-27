@@ -19,6 +19,7 @@ import { useDispatch } from "react-redux";
 import { incrementStep } from "../../features/stepperSlice";
 //Styles
 import styles from "./Form.module.scss";
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 interface FormData {
   password: string;

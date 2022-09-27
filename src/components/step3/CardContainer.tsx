@@ -1,14 +1,18 @@
 import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+//Material UI
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import WarningAmberTwoToneIcon from "@mui/icons-material/WarningAmberTwoTone";
 import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
-import { useNavigate } from "react-router-dom";
+//redux
 import { useDispatch } from "react-redux";
 import { resetSteps } from "../../features/stepperSlice";
+//locale
 import { useTranslation } from 'react-i18next';
+//Styles
 import styles from './CardContainer.module.scss';
 interface CardContainerProps {
   error?: boolean;
