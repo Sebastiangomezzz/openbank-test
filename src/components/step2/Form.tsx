@@ -10,7 +10,7 @@ import { MockResult } from "../../services/api";
 //api
 import { submitForm } from "../../services/api";
 //react-hook-form
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 //locale
 import { useTranslation } from "react-i18next";
 import { ButtonBox } from "./ButtonBox";
@@ -38,26 +38,27 @@ export const Form = () => {
   } = useForm<FormData>();
   const { t } = useTranslation("translation");
 
-  const onSubmit = (data: FormData) => {
-    setLoading(true);
-    const { password } = data;
-    submitForm(password)
-      .then((response: MockResult) => {
-        response.status === 200 &&
-          dispatch(incrementStep()) &&
-          navigate("/feedback_OK");
-      })
-      .catch((error) => {
-        error.status === 401 &&
-          dispatch(incrementStep()) &&
-          navigate("/feedback_KO");
-      });
-  };
+  const onSubmit = useCallback(
+    (data: FormData) => {
+      setLoading(true);
+      const { password } = data;
+      submitForm(password)
+        .then((response: MockResult) => {
+          response.status === 200 &&
+            dispatch(incrementStep()) &&
+            navigate("/feedback_OK");
+        })
+        .catch((error) => {
+          error.status === 401 &&
+            dispatch(incrementStep()) &&
+            navigate("/feedback_KO");
+        });
+    },
+    [dispatch, navigate]
+  );
+
   return (
-    <form
-      aria-label="form"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form aria-label="form" onSubmit={handleSubmit(onSubmit)}>
       <Box className={styles.inputsContainer}>
         <Box className={styles.inputBox1}>
           <label
@@ -72,7 +73,6 @@ export const Form = () => {
             type="password"
             variant="outlined"
             className={styles.textField}
-            
             {...register("password", {
               required: t("step2.passwordInput.required"),
               minLength: {
