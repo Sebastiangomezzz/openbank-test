@@ -44,4 +44,28 @@ describe("Form tests", () => {
         const error = await screen.findByText(/required/i);
         expect(error).toBeTruthy();
     });  
+  test('should render an error if the two passwords are not the same', async () => {
+        render(<Form />);
+        const user = userEvent.setup();
+        const passwordInput = screen.getByLabelText(/passwordInput/i);
+        const repeatPasswordInput = screen.getByLabelText(/repassInput/i);
+        const submitButton = screen.getByRole("button", { name: /buttonNext/i });
+        await user.type(passwordInput, "Qwerty123");
+        await user.type(repeatPasswordInput, "Qwerty1234");
+        await user.click(submitButton);
+    const error = await screen.findByText(/match/i);
+    expect(error).toBeTruthy();
+  });
+  test('should render an error if the password hint is larger than 255 characters', async () => {
+    
+    render(<Form />);
+    const user = userEvent.setup();
+    const passwordHintInput = screen.getByLabelText(/hintInput/i);
+    const submitButton = screen.getByRole("button", { name: /buttonNext/i });
+    await user.type(passwordHintInput, 'iuadoiausdoiaudoauidyoaiusyfghfdghdfghdfghfdghdfghfdghdfghdfghdfhfgcvbncvbncvbncvbnvbnvcbncvbndoauisdyoaiusydoauisydoaiusdyoaiusydoaiusydoaiusydoauisydoauisydoiauysdoiausydoiuaysdouiaysdoiuaysdoiuaysdoiuaysdoiuaysdoiuaysodiuyasodiuyaosiudyoaiusdyoaiusdyhodfposdfgoiusdfhoasduifosaidufoasuidfoasuidfoasuidfoasuidfoasiduf')
+    await user.click(submitButton);
+    jest.setTimeout(10000);
+    const error = await screen.findByText(/maxLength/i);
+    expect(error).toBeTruthy();
+  });
 });
