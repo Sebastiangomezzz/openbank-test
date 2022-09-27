@@ -2,12 +2,13 @@ import React from "react";
 import { screen, render } from "../../utils/test-utils/mockProvider";
 import userEvent from "@testing-library/user-event";
 import { CardContainer } from "./CardContainer";
-import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom/extend-expect";
+
+const mockedNavigator = jest.fn();
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
-  useNavigate: () => jest.fn(),
+  useNavigate: () => mockedNavigator,
 }));
 
 describe("CardContainer tests", () => {
@@ -35,11 +36,13 @@ describe("CardContainer tests", () => {
     const button = screen.getByRole("button", { name: /step3KO.button/i });
     expect(button).toBeTruthy();
   });
-  test("should navigate to step1 if OK/KO button is clicked", async () => {
+  test("should navigate to '/' if OK/KO button is clicked", async () => {
     render(<CardContainer />);
     const user = userEvent.setup();
     const button = screen.getByRole("button", { name: /step3OK.button/i });
     await user.click(button);
-    expect(screen.getByRole("heading", { name: /step1.title/i })).toBeTruthy();
+
+    expect(mockedNavigator).toBeCalledWith("/");
+    screen.debug();
   });
 });

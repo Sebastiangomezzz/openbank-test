@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 //Material UI
 import TextField from "@mui/material/TextField";
@@ -10,7 +10,7 @@ import { MockResult } from "../../services/api";
 //api
 import { submitForm } from "../../services/api";
 //react-hook-form
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 //locale
 import { useTranslation } from "react-i18next";
 import { ButtonBox } from "./ButtonBox";
@@ -19,13 +19,12 @@ import { useDispatch } from "react-redux";
 import { incrementStep } from "../../features/stepperSlice";
 //Styles
 import styles from "./Form.module.scss";
-import FormControlLabel from '@mui/material/FormControlLabel';
 
-interface FormData {
+type FormData = {
   password: string;
   repass: string;
   password_hint: string;
-}
+};
 
 export const Form = () => {
   const navigate = useNavigate();
@@ -36,7 +35,7 @@ export const Form = () => {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm();
+  } = useForm<FormData>();
   const { t } = useTranslation("translation");
 
   const onSubmit = (data: FormData) => {
@@ -57,7 +56,6 @@ export const Form = () => {
   return (
     <form
       aria-label="form"
-      //@ts-ignore
       onSubmit={handleSubmit(onSubmit)}
     >
       <Box className={styles.inputsContainer}>

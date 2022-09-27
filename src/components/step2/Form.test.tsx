@@ -40,11 +40,9 @@ describe("Form tests", () => {
         const user = userEvent.setup();
         const repeatPasswordInput = screen.getByLabelText(/repassInput/i);
         const submitButton = screen.getByRole("button", { name: /buttonNext/i });
-        user.type(repeatPasswordInput, "Qwerty123");
-        screen.debug();
+        await user.type(repeatPasswordInput, "Qwerty123");
         await user.click(submitButton);
-        // const error = await screen.findByText(/required/i);
-        // expect(error).toBeTruthy();
-    });
-  
+        const error = await screen.findByText(/required/i);
+        expect(error).toBeTruthy();
+    });  
 });

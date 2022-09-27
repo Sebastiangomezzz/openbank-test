@@ -5,7 +5,6 @@ import { Provider } from "react-redux";
 import { configureStore, PreloadedState } from "@reduxjs/toolkit";
 import stepperReducer from "../../features/stepperSlice";
 import { store, RootState } from "../../store";
-import { MemoryRouter } from "react-router-dom";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: PreloadedState<RootState>;
