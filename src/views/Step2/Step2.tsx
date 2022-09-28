@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Step2.module.scss";
-import { Form } from "../../components/step2/Form";
+import { Form } from "../../components/passwordManager/steps/step2/Form";
 import { useTranslation } from "react-i18next";
 
 export const Step2 = () => {

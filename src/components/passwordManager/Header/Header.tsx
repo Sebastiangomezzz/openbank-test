@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Header.module.scss";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -8,6 +7,7 @@ import OpenbankLogo from "../../../assets/img/logo_openbank.png";
 import KeyOpenBank from "../../../assets/img/key_openbank.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import styles from "./Header.module.scss";
 
 export const Header = (): JSX.Element => {
   const step = useSelector((state: RootState) => state.stepper.value);

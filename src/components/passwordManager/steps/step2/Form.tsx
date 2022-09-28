@@ -5,20 +5,30 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Tooltip from "@mui/material/Tooltip";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+//components
+import { ButtonBox } from "../../../common";
 //Types
-import { MockResult } from "../../services/api";
+import { MockResult } from "../../../../services/api";
 //api
-import { submitForm } from "../../services/api";
+import { submitForm } from "../../../../services/api";
 //react-hook-form
 import { useForm } from "react-hook-form";
 //locale
 import { useTranslation } from "react-i18next";
-import { ButtonBox } from "./ButtonBox";
 //redux
 import { useDispatch } from "react-redux";
-import { incrementStep } from "../../features/stepperSlice";
+import {
+  incrementStep,
+  decrementStep,
+} from "../../../../features/stepperSlice";
 //Styles
 import styles from "./Form.module.scss";
+//Validators
+import {
+  passwordValidator,
+  confirmPasswordValidator,
+  passwordHintValidator,
+} from "../../helpers/formValidators";
 
 type FormData = {
   password: string;
@@ -57,6 +67,11 @@ export const Form = () => {
     [dispatch, navigate]
   );
 
+  const handleNavigateBack = useCallback(() => {
+    dispatch(decrementStep());
+    navigate("/");
+  }, [navigate, dispatch]);
+
   return (
     <form aria-label="form" onSubmit={handleSubmit(onSubmit)}>
       <Box className={styles.inputsContainer}>
@@ -73,21 +88,7 @@ export const Form = () => {
             type="password"
             variant="outlined"
             className={styles.textField}
-            {...register("password", {
-              required: t("step2.passwordInput.required"),
-              minLength: {
-                value: 8,
-                message: t("step2.passwordInput.minLength"),
-              },
-              maxLength: {
-                value: 24,
-                message: t("step2.passwordInput.maxLength"),
-              },
-              pattern: {
-                value: /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])/,
-                message: t("step2.passwordInput.pattern"),
-              },
-            })}
+            {...register("password", passwordValidator(t))}
             error={!!errors?.password}
             FormHelperTextProps={{ style: { fontSize: "1rem" } }}
             helperText={
@@ -107,16 +108,7 @@ export const Form = () => {
             aria-label="repeat-password"
             variant="outlined"
             className={styles.textField}
-            {...register("repass", {
-              validate: (value) => {
-                if (value.length >= 8) {
-                  return (
-                    value === watch("password") ||
-                    `${t("step2.repassInput.match")}`
-                  );
-                }
-              },
-            })}
+            {...register("repass", confirmPasswordValidator(t, watch))}
             error={!!errors?.repass}
             FormHelperTextProps={{ style: { fontSize: "1rem" } }}
             helperText={
@@ -148,9 +140,7 @@ export const Form = () => {
           aria-label="password-hint"
           variant="outlined"
           sx={{ width: "100%" }}
-          {...register("password_hint", {
-            maxLength: { value: 255, message: t("step2.hintInput.maxLength") },
-          })}
+          {...register("password_hint", passwordHintValidator(t))}
           error={!!errors?.password_hint}
           FormHelperTextProps={{ style: { fontSize: "1rem" } }}
           helperText={
@@ -160,7 +150,7 @@ export const Form = () => {
           }
         />
       </Box>
-      <ButtonBox loading={loading} />
+      <ButtonBox loading={loading} onNavigate={handleNavigateBack} />
     </form>
   );
 };

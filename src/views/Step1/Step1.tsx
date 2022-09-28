@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Step1.module.scss";
-import { CheckboxForm } from "../../components/step1/CheckboxForm";
+import { CheckboxForm } from "../../components/passwordManager/steps/step1/CheckboxForm";
 import { useTranslation } from "react-i18next";
 
 export const Step1 = () => {

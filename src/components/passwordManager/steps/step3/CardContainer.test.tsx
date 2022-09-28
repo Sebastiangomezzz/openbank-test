@@ -1,5 +1,5 @@
 import React from "react";
-import { screen, render } from "../../utils/test-utils/mockProvider";
+import { screen, render } from "../../../../utils/test-utils/mockProvider";
 import userEvent from "@testing-library/user-event";
 import { CardContainer } from "./CardContainer";
 import "@testing-library/jest-dom/extend-expect";

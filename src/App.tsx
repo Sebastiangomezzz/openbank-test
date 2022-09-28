@@ -10,7 +10,7 @@ import { store } from "./store";
 //Views
 import { Step1, Step2, Step3OK, Step3KO } from "./views";
 //Global Layout
-import { Layout } from "./components/common/Layout";
+import { Layout } from "./components/passwordManager/Layout";
 
 export const App = () => {
   return (
