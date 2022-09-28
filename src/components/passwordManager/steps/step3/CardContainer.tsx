@@ -9,7 +9,7 @@ import WarningAmberTwoToneIcon from "@mui/icons-material/WarningAmberTwoTone";
 import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
 //redux
 import { useDispatch } from "react-redux";
-import { resetSteps } from "../../../../features/stepperSlice";
+import { resetSteps } from "../../../../redux/features/stepperSlice";
 //locale
 import { useTranslation } from 'react-i18next';
 //Styles

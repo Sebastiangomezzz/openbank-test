@@ -9,7 +9,7 @@ import Tooltip from "@mui/material/Tooltip";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 //redux
 import { useDispatch } from "react-redux";
-import { incrementStep } from "../../../../features/stepperSlice";
+import { incrementStep } from "../../../../redux/features/stepperSlice";
 //locale
 import { useTranslation } from "react-i18next";
 //Styles

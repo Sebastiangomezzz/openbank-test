@@ -6,7 +6,7 @@ import { theme } from "./styles/materialUIOverrides";
 import { StyledEngineProvider } from "@mui/material/styles";
 //Redux
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { store } from "./redux/store";
 //Views
 import { Step1, Step2, Step3OK, Step3KO } from "./views";
 //Global Layout
@@ -16,17 +16,17 @@ export const App = () => {
   return (
     <Provider store={store}>
       <StyledEngineProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Step1 />} />
-              <Route path="/create_password" element={<Step2 />} />
-              <Route path="/feedback_OK" element={<Step3OK />} />
-              <Route path="/feedback_KO" element={<Step3KO />} />
-            </Routes>
-          </Router>
-        </Layout>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Router>
+              <Routes>
+                <Route path="/" element={<Step1 />} />
+                <Route path="/create_password" element={<Step2 />} />
+                <Route path="/feedback_OK" element={<Step3OK />} />
+                <Route path="/feedback_KO" element={<Step3KO />} />
+              </Routes>
+            </Router>
+          </Layout>
         </ThemeProvider>
       </StyledEngineProvider>
     </Provider>
