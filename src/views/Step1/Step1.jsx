@@ -1,16 +1,17 @@
 import React from "react";
+import { CheckboxForm } from "../../components/passwordManager/steps/step1/CheckboxForm";
+import { useTranslation } from "react-i18next";
 import styles from "./Step1.module.scss";
-import { CheckboxForm } from "../../components/step1/CheckboxForm";
 
 export const Step1 = () => {
+  const { t } = useTranslation("translation");
+
   return (
     <div className={`${styles.container} ${styles.container_arrow_top}`}>
-      <h1>Bienvenido/a a la Cuenta Corriente OpenClose</h1>
-      <p>
-        En los siguientes pasos, le pediremos una serie de datos para poder
-        crear su nueva contraseña.
-      </p>
-      <p>Por favor, para continuar, marque la casilla y pulse "Siguiente".</p>
+      <h1 className={styles.title}>{t("step1.title")}</h1>
+      <p>{t("step1.text1")}</p>
+      <br />
+      <p>{t("step1.text2")}</p>
       <div className={styles.checkboxButtonContainer}>
         <CheckboxForm />
       </div>

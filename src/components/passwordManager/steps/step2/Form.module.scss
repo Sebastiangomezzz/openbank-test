@@ -1,0 +1,65 @@
+@import '../../../../styles/base.scss';
+
+.inputsContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    @media(max-width: 900px){
+        flex-direction: column;
+        align-items: center;
+    }   
+}
+.inputBox1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 3rem;
+    @media(max-width: 900px){
+        margin-bottom: 2rem;
+    }
+}
+.inputBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 3rem;
+}
+.inputHintBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 8rem;
+    @media(max-width: 900px){
+        margin-top: 2rem;
+    }
+}
+.inputLabel{
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+.textField{
+    width: 18rem;
+}
+.tooltip{
+    background-color: $white;
+    border-radius: 2px;
+    padding: 0.5rem 1rem;
+}
+.tooltipText{
+    font-size: 1.2rem;
+    color: $primary-color;
+}
+.tooltipIcon{
+    font-size: 20px;
+    color: $primary-color;
+}
+@media (max-width: 900px) {
+    p{
+        font-size: $text-mid-size;
+    }
+}

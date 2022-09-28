@@ -1,0 +1,39 @@
+.title{
+    @media(max-width: 900px){
+        font-size: 2rem;
+    }
+}
+.container{
+    margin-top: 5rem;
+}
+.cardHeader{
+    height: 100%;
+    width: 100%;
+}
+.iconWarning{
+    color: red;
+    font-size: 80px;
+    margin: 0 3rem 0 1rem;
+    @media(max-width: 900px){
+        font-size: 50px;
+        margin: 0 1rem 0 0;
+    }
+}
+.iconCheck{
+    color: green;
+    font-size: 80px;
+    margin: 0 3rem 0 1rem;
+    @media(max-width: 900px){
+        font-size: 50px;
+        margin: 0 1rem 0 0;
+    }
+}
+.cardActions{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 1rem;
+    @media(max-width: 900px){
+        font-size: 50px;
+        margin: auto;
+    }
+}
