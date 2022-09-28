@@ -12,10 +12,10 @@ import styles from "./ButtonBox.module.scss";
 
 interface ButtonBoxProps {
   loading: boolean;
-  onNavigate: () => void;
+  onBackBtnClicked: () => void;
 }
 
-export const ButtonBox = ({loading, onNavigate}:ButtonBoxProps) => {
+export const ButtonBox = ({ loading, onBackBtnClicked }: ButtonBoxProps) => {
   const { t } = useTranslation("translation");
 
   return (
@@ -24,7 +24,7 @@ export const ButtonBox = ({loading, onNavigate}:ButtonBoxProps) => {
         className={styles.button}
         variant="contained"
         startIcon={<ArrowBackIosIcon />}
-        onClick={onNavigate}
+        onClick={onBackBtnClicked}
         color="secondary"
       >
         {t("step2.buttonPrev")}

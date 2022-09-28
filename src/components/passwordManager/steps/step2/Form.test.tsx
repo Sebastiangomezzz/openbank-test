@@ -10,15 +10,22 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => jest.fn(),
 }));
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
+
 describe("Form tests", () => {
   test("should render an error if the password hint is larger than 255 characters", async () => {
     render(<Form />);
     const user = userEvent.setup();
     const passwordHintInput = screen.getByLabelText(/hintInput/i);
     const submitButton = screen.getByRole("button", { name: /buttonNext/i });
-    await waitFor(() => user.type(passwordHintInput, "a".repeat(256)), {
-      timeout: 6000,
-    });
+    await waitFor(
+      async () => await user.type(passwordHintInput, "a".repeat(256)),
+      {
+        timeout: 6000,
+      }
+    );
     await user.click(submitButton);
     const error = await screen.findByText(/maxLength/i);
     expect(error).toBeTruthy();

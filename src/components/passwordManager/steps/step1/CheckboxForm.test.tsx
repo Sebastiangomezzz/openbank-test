@@ -1,8 +1,16 @@
 import React from "react";
-import { screen, render, fireEvent } from "../../../../utils/test-utils/mockProvider";
+import {
+  screen,
+  render,
+  fireEvent,
+} from "../../../../utils/test-utils/mockProvider";
 import userEvent from "@testing-library/user-event";
 import { CheckboxForm } from "./CheckboxForm";
 import "@testing-library/jest-dom/extend-expect";
+
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),

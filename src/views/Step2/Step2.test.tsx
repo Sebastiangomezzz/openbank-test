@@ -10,6 +10,10 @@ jest.mock("react-router-dom", () => ({
   useNavigate: () => mockedNavigator,
 }));
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
+
 describe("Step2 view tests", () => {
   test("should render the title", () => {
     render(<Step2 />);

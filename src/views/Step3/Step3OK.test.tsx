@@ -4,7 +4,9 @@ import { Step3OK } from "./Step3OK";
 import "@testing-library/jest-dom/extend-expect";
 
 const mockedNavigator = jest.fn();
-
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockedNavigator,
@@ -32,4 +34,3 @@ describe("Step3OK view tests", () => {
     expect(text2).toBeTruthy();
   });
 });
-

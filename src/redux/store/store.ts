@@ -1,16 +1,12 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import stepperReducer from "../features/stepperSlice";
-import { passwordApi } from '../features/passwordApi';
 
-export const allReducers = combineReducers({
+const reducers = combineReducers({
   stepper: stepperReducer,
-  [passwordApi.reducerPath]: passwordApi.reducer
-})
+});
 
 export const store = configureStore({
-  reducer: allReducers,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(passwordApi.middleware)
+  reducer: reducers
 });
 
 export type RootState = ReturnType<typeof store.getState>;

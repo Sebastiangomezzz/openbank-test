@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 //Material UI
 import TextField from "@mui/material/TextField";
@@ -7,10 +7,6 @@ import Tooltip from "@mui/material/Tooltip";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 //components
 import { ButtonBox } from "../../../common";
-//Types
-import { MockResult } from "../../../../services/api";
-//api
-import { submitForm } from "../../../../services/api";
 //react-hook-form
 import { useForm } from "react-hook-form";
 //locale
@@ -18,9 +14,8 @@ import { useTranslation } from "react-i18next";
 //redux
 import { useDispatch } from "react-redux";
 import {
-  incrementStep,
   decrementStep,
-} from "../../../../features/stepperSlice";
+} from "../../../../redux/features/stepperSlice";
 //Styles
 import styles from "./Form.module.scss";
 //Validators
@@ -29,6 +24,8 @@ import {
   confirmPasswordValidator,
   passwordHintValidator,
 } from "../../helpers/formValidators";
+//hooks
+import { useSubmitPasswordMutation } from "../../hooks/useSubmitPasswordMutation";
 
 type FormData = {
   password: string;
@@ -39,32 +36,22 @@ type FormData = {
 export const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
+  const { isLoading, submitPasswordMutation } = useSubmitPasswordMutation();
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
   } = useForm<FormData>();
+
   const { t } = useTranslation("translation");
 
   const onSubmit = useCallback(
     (data: FormData) => {
-      setLoading(true);
-      const { password } = data;
-      submitForm(password)
-        .then((response: MockResult) => {
-          response.status === 200 &&
-            dispatch(incrementStep()) &&
-            navigate("/feedback_OK");
-        })
-        .catch((error) => {
-          error.status === 401 &&
-            dispatch(incrementStep()) &&
-            navigate("/feedback_KO");
-        });
+      submitPasswordMutation.mutate(data.password);
     },
-    [dispatch, navigate]
+    [submitPasswordMutation]
   );
 
   const handleNavigateBack = useCallback(() => {
@@ -150,7 +137,7 @@ export const Form = () => {
           }
         />
       </Box>
-      <ButtonBox loading={loading} onNavigate={handleNavigateBack} />
+      <ButtonBox loading={isLoading} onBackBtnClicked={handleNavigateBack} />
     </form>
   );
 };

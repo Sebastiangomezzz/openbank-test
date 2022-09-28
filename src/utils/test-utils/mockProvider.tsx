@@ -1,21 +1,25 @@
+
 import React, { PropsWithChildren } from "react";
 import { render as rtlRender } from "@testing-library/react";
 import type { RenderOptions } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore, PreloadedState } from "@reduxjs/toolkit";
-import stepperReducer from "../../features/stepperSlice";
-import { store, RootState } from "../../store";
+import stepperReducer from "../../redux/features/stepperSlice";
+import { store, RootState } from "../../redux/store";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: PreloadedState<RootState>;
   store?: typeof store;
 }
 
+const queryClient = new QueryClient();
+
 function render(
   ui: React.ReactElement,
   {
     preloadedState = {
-      stepper: { value: 0 },
+      stepper:{value: 0 }
     },
     store = configureStore({
       reducer: { stepper: stepperReducer },
@@ -25,7 +29,11 @@ function render(
   }: ExtendedRenderOptions = {}
 ) {
   const Wrapper = ({ children }: PropsWithChildren<{}>) => {
-    return <Provider store={store}>{children}</Provider>;
+    return (
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>{children}</Provider>
+      </QueryClientProvider>
+    );
   };
   return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 }

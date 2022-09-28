@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface StepperState {
-  value: number;
+  value: number ;
 }
 
 const initialState: StepperState = {
-  value: 0,
+  value: 0 ,
 };
 
 export const stepperSlice = createSlice({
@@ -20,10 +20,11 @@ export const stepperSlice = createSlice({
     },
     resetSteps: (state) => {
       state.value = 0;
-    }
+    },
   },
 });
 
-export const { incrementStep, decrementStep, resetSteps } = stepperSlice.actions;
+export const { incrementStep, decrementStep, resetSteps } =
+  stepperSlice.actions;
 
 export default stepperSlice.reducer;
