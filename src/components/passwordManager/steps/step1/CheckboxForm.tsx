@@ -1,5 +1,4 @@
-import React, { useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 //Material UI
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -7,27 +6,20 @@ import FormGroup from "@mui/material/FormGroup";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-//redux
-import { useDispatch } from "react-redux";
-import { incrementStep } from "../../../../redux/features/stepperSlice";
+
 //locale
 import { useTranslation } from "react-i18next";
 //Styles
 import styles from "./CheckboxForm.module.scss";
 
-export const CheckboxForm = () => {
+interface CheckboxFormProps {
+  onCheckboxChecked: () => void;
+}
+
+export const CheckboxForm = ({ onCheckboxChecked }: CheckboxFormProps) => {
   const [termsAndConditionsChecked, setTermsAndConditionsChecked] =
     useState<boolean>(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { t } = useTranslation("translation");
-
- 
-
-  const handleNavigate = useCallback(() => {
-    dispatch(incrementStep());
-    navigate("/create_password");
-  }, [navigate, dispatch]);
 
   return (
     <FormGroup className={styles.formGroup}>
@@ -62,7 +54,7 @@ export const CheckboxForm = () => {
       <Button
         className={styles.button}
         variant="contained"
-        onClick={handleNavigate}
+        onClick={onCheckboxChecked}
         endIcon={<ArrowForwardIosIcon />}
         disabled={!termsAndConditionsChecked}
       >

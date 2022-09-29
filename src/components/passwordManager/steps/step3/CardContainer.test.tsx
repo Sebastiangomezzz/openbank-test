@@ -10,6 +10,9 @@ jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
   useNavigate: () => mockedNavigator,
 }));
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
 
 describe("CardContainer tests", () => {
   test("should render the card title for feedback_OK if no error prop is passed", () => {
@@ -43,6 +46,5 @@ describe("CardContainer tests", () => {
     await user.click(button);
 
     expect(mockedNavigator).toBeCalledWith("/");
-    screen.debug();
   });
 });
