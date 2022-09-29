@@ -33,7 +33,7 @@
       "/node_modules/",
       "/dist/",
       "/build/",
-      "src/redux/",
+      "src/redux/store/",
       "src/services/",
       "src/utils/",
       "src/styles/",

@@ -5,7 +5,7 @@ import {
   fireEvent,
 } from "../../../../utils/test-utils/mockProvider";
 import userEvent from "@testing-library/user-event";
-import { CheckboxForm } from "./CheckboxForm";
+import { TermsAndConditionsCheckbox } from "./TermsAndConditionsCheckbox";
 import {waitFor} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
@@ -23,19 +23,19 @@ const helpers = {
 
 describe("CheckboxForm tests", () => {
   test("should render the checkbox form", () => {
-    render(<CheckboxForm onCheckboxChecked={()=>{}}/>);
+    render(<TermsAndConditionsCheckbox onCheckboxChecked={()=>{}}/>);
     const checkbox = screen.getByRole("checkbox");
     expect(checkbox).toBeTruthy();
   });
   test("the checkbox should be unchecked at first and, when clicked, be checked", () => {
-    render(<CheckboxForm onCheckboxChecked={() => {}} />);
+    render(<TermsAndConditionsCheckbox onCheckboxChecked={() => {}} />);
     const checkbox = screen.getByRole("checkbox", { name: /step1/i });
     expect(checkbox).not.toBeChecked();
     fireEvent.click(checkbox);
     expect(checkbox).toBeChecked();
   });
   test("the button should be disabled if the checkbox is not checked and be enabled when checkbox is clicked again", () => {
-    render(<CheckboxForm onCheckboxChecked={() => {}} />);
+    render(<TermsAndConditionsCheckbox onCheckboxChecked={() => {}} />);
     const button = screen.getByRole("button");
     expect(button).toBeDisabled();
     const checkbox = screen.getByRole("checkbox", { name: /step1/i });
@@ -43,7 +43,7 @@ describe("CheckboxForm tests", () => {
     expect(button).toBeEnabled();
   });
   test("tooltip should be visible when hovering the red text", async () => {
-    render(<CheckboxForm onCheckboxChecked={() => {}} />);
+    render(<TermsAndConditionsCheckbox onCheckboxChecked={() => {}} />);
     const user = userEvent.setup();
     const checkbox = screen.getByRole("checkbox", { name: /step1/i });
     await user.hover(checkbox);
@@ -53,7 +53,7 @@ describe("CheckboxForm tests", () => {
     expect(tooltip).toBeVisible();
   });
   test("incrementStep should be called if button is clicked", async () => {
-    render(<CheckboxForm onCheckboxChecked={helpers.mockIncrementStep} />);
+    render(<TermsAndConditionsCheckbox onCheckboxChecked={helpers.mockIncrementStep} />);
     const user = userEvent.setup();
     const checkbox = screen.getByRole("checkbox", { name: /step1/i });
     fireEvent.click(checkbox);
