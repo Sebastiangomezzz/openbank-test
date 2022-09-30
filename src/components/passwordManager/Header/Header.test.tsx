@@ -2,6 +2,10 @@ import React from "react";
 import { screen, render } from "../../../utils/test-utils/mockProvider";
 import { Header } from "./Header";
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
+
 describe("Header tests", () => {
   test("should render the openbank logo", () => {
     render(<Header />);

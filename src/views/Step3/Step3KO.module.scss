@@ -11,10 +11,28 @@
 .container_arrow_top::after{
   content: " ";
   position: absolute;
-  left: 71.7%;
-  top: -10px;
+  left: 74.1%;
+  top: -15px;
   border-top: none;
   border-right: 15px solid transparent;
   border-left: 15px solid transparent;
   border-bottom: 15px solid $white;
+  @media(max-width: 1600px){
+    left: 73.8%;
+  }
+  @media(max-width: 1200px){
+    left: 73.9%;
+  }
+  @media(max-width: 1024px){
+    left: 73.8%;
+  }
+  @media(max-width: 900px){
+        left: 76.2%;
+  }
+  @media(max-width: 600px){
+        left: 76.1%;
+  }
+  @media(max-width: 500px){
+        left: 74%;
+  }
 }

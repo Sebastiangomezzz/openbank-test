@@ -6,7 +6,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    debug: true,
+    debug: false,
     fallbackLng: "en",
     interpolation: {
       escapeValue: false,
@@ -41,8 +41,7 @@ i18n
               match: "Las contraseñas no coinciden",
             },
             hintInput: {
-              label:
-                "Introduce una pista para recordar tu contraseña (Opcional)",
+              label: "Introduce una pista para recordar tu contraseña (Opcional)",
               tooltip: "La pista debe tener como máximo 255 caracteres",
               maxLength: "La pista debe tener menos de 255 caracteres",
             },

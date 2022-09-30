@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import OpenbankLogo from "../../../assets/img/logo_openbank.png";
 import KeyOpenBank from "../../../assets/img/key_openbank.png";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
+import { RootState } from "../../../redux/store";
 import styles from "./Header.module.scss";
 
 export const Header = (): JSX.Element => {
