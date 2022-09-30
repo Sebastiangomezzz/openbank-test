@@ -28,6 +28,23 @@ The second view is a form that asks for a password, a confirmation of the passwo
 ### Third step
 The third view will show a success message or a error message depending on the password used in the previous step. To trigger the error message/view, the password must be "pruebaKO123". Any other password created will trigger the success message/view. The button in this view will take to the landing.<br>
 
+## Folder structure
+
+The project source root contains the following folders/files:
+- **components**: Contains all the components used in the app. It is divided in common and passwordManager folders. The common folder contains the components that are used in more than one view. The passwordManager folder contains the components that are used only in one of the three steps.
+- **hooks**: Contains all the custom hooks used in the app.
+- **views**: Contains all the views used in the app.
+- **redux**: Contains two folders, the features with the slices (stepperSlice) of the state and the store one, with the configuration for the app.
+- **services**: Contains the service used to check the password, the passwordApi.
+- **utils**: Contains the utils used in the app, in this case a folder named test-utils with a mockProvider inside, used for testing.
+- **i18n**: Contains the configuration for the internationalization.
+- **App.tsx**: The main component of the app.
+- **index.js**: The entry point of the app.
+- **.env**: The environment variables (none actually).
+- **.gitignore**: The gitignore file.
+- **package.json**: The package.json file.
+- **README.md**: The readme file.
+
 ## Scripts
 
 In the project directory, you can run:
