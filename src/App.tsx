@@ -8,7 +8,7 @@ import { StyledEngineProvider } from "@mui/material/styles";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 //Views
-import { Step1, Step2, Step3OK, Step3KO } from "./views";
+import { Step1, Step2, Step3 } from "./views";
 //Global Layout
 import { Layout } from "./components/passwordManager/Layout";
 //React-query
@@ -27,8 +27,7 @@ export const App = () => {
                 <Routes>
                   <Route path="/" element={<Step1 />} />
                   <Route path="/create_password" element={<Step2 />} />
-                  <Route path="/feedback_OK" element={<Step3OK />} />
-                  <Route path="/feedback_KO" element={<Step3KO />} />
+                  <Route path="/feedback" element={<Step3 />} />
                 </Routes>
               </Router>
             </Layout>

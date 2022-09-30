@@ -4,7 +4,7 @@ const RESPONSE_OK = { status: 200 };
 const RESPONSE_KO = { status: 401 };
 
 export type MockResult = {
-  status: number;
+  status: number,
 };
 
 const submitForm = (pass: string):Promise<MockResult> => {
