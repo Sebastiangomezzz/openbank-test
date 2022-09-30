@@ -13,12 +13,12 @@ export const useSubmitPasswordMutation = () => {
       .then((response: MockResult) => {
         response.status === 200 &&
           dispatch(incrementStep()) &&
-          navigate("/feedback_OK");
+          navigate("/feedback", { state: { error: false } });
       })
       .catch((error: { status: number }) => {
         error.status === 401 &&
           dispatch(incrementStep()) &&
-          navigate("/feedback_KO");
+          navigate("/feedback", { state: { error: true } });
       })
   );
 
