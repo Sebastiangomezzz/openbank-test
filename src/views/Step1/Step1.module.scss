@@ -28,6 +28,25 @@
   border-right: 15px solid transparent;
   border-left: 15px solid transparent;
   border-bottom: 15px solid $white;
+  @media (max-width: 1700px) {
+    left: 22%;
+  }
+  @media (max-width: 1600px) {
+    left: 21.5%;
+  }
+  @media (max-width: 1500px) {
+        left: 21%;
+  }
+  @media (max-width: 1275px) {
+        left: 20.5%;
+  }
+  @media(max-width: 1024px){
+    left: 20%;
+  }
+  @media(max-width: 900px){
+        left: 21%;
+  }
+    
 }
 .checkboxButtonContainer{
     margin-top: 21.7rem;
