@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import styles from "./Step1.module.scss";
-import { CheckboxForm } from "../../components/passwordManager/steps/step1/CheckboxForm";
+import { TermsAndConditionsCheckbox } from "../../components/passwordManager/steps/step1/TermsAndConditionsCheckbox";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -22,7 +22,7 @@ export const Step1 = () => {
       <br />
       <p>{t("step1.text2")}</p>
       <div className={styles.checkboxButtonContainer}>
-        <CheckboxForm onCheckboxChecked={handleNavigate}/>
+        <TermsAndConditionsCheckbox onCheckboxChecked={handleNavigate} />
       </div>
     </div>
   );

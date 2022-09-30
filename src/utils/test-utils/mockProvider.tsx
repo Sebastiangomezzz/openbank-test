@@ -39,4 +39,5 @@ function render(
 }
 
 export * from "@testing-library/react";
+export {renderHook} from "@testing-library/react-hooks";
 export { render };

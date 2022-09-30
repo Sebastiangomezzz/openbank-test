@@ -10,13 +10,13 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 //locale
 import { useTranslation } from "react-i18next";
 //Styles
-import styles from "./CheckboxForm.module.scss";
+import styles from "./TermsAndConditionsCheckbox.module.scss";
 
 interface CheckboxFormProps {
   onCheckboxChecked: () => void;
 }
 
-export const CheckboxForm = ({ onCheckboxChecked }: CheckboxFormProps) => {
+export const TermsAndConditionsCheckbox = ({ onCheckboxChecked }: CheckboxFormProps) => {
   const [termsAndConditionsChecked, setTermsAndConditionsChecked] =
     useState<boolean>(false);
   const { t } = useTranslation("translation");
