@@ -1,3 +1,3 @@
-export * from './passwordManager/steps/step1';
-export * from './passwordManager/steps/step2';
-export * from './passwordManager/steps/step3';
+export * from './step1';
+export * from './step2';
+export * from './step3';

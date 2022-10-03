@@ -1,5 +1,5 @@
 import React from "react";
-import { screen, render } from "../../utils/test-utils/mockProvider";
+import { screen, render } from "../../../utils/test-utils/mockProvider";
 import { Step2 } from "./Step2";
 import "@testing-library/jest-dom/extend-expect";
 

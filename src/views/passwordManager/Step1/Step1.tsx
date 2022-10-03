@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import styles from "./Step1.module.scss";
-import { TermsAndConditionsCheckbox } from "../../components/passwordManager/steps/step1/TermsAndConditionsCheckbox";
+import { TermsAndConditionsCheckbox } from "../../../components/passwordManager/steps/step1/TermsAndConditionsCheckbox";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { incrementStep } from "../../redux/features/stepperSlice";
+import { incrementStep } from "../../../redux/features/stepperSlice";
 
 export const Step1 = () => {
   const { t } = useTranslation('translation');
