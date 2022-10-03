@@ -41,7 +41,8 @@ i18n
               match: "Las contraseñas no coinciden",
             },
             hintInput: {
-              label: "Introduce una pista para recordar tu contraseña (Opcional)",
+              label:
+                "Introduce una pista para recordar tu contraseña (Opcional)",
               tooltip: "La pista debe tener como máximo 255 caracteres",
               maxLength: "La pista debe tener menos de 255 caracteres",
             },
@@ -58,6 +59,12 @@ i18n
             title: "¡Tu nueva contraseña se ha creado con éxito!",
             subheader: "Ahora ya podrás acceder a tu cuenta",
             button: "Acceder",
+          },
+          error404: {
+            title: "La ruta no existe",
+            subheader:
+              "Disculpa las molestias. Puedes acceder al inicio pulsando el botón",
+            button: "Volver al inicio",
           },
         },
       },
@@ -106,6 +113,12 @@ i18n
             title: "Your new password was successfully created!",
             subheader: "Now you can access your account",
             button: "Access",
+          },
+          error404: {
+            title: "La route doesn't exist",
+            subheader:
+              "Sorry for the inconvenience. You can access the home page by pressing the button",
+            button: "Back to the beginning",
           },
         },
       },

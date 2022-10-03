@@ -1,4 +1,4 @@
-@import '../../../../styles/base.scss';
+@import '../../../styles/base.scss';
 
 .title{
     @media(max-width: 900px){
@@ -14,15 +14,6 @@
 }
 .iconWarning{
     color: $primary-color;
-    font-size: 80px;
-    margin: 0 3rem 0 1rem;
-    @media(max-width: 900px){
-        font-size: 50px;
-        margin: 0 1rem 0 0;
-    }
-}
-.iconCheck{
-    color: $green;
     font-size: 80px;
     margin: 0 3rem 0 1rem;
     @media(max-width: 900px){
