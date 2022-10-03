@@ -14,6 +14,8 @@ describe("stepperReducer tests", () => {
   it("should return the initial state", () => {
     expect(stepperReducer(undefined, { type: "" })).toEqual({
       value: 0,
+      step1Completed: false,
+      passwordError: false,
     });
   });
 
@@ -24,6 +26,8 @@ describe("stepperReducer tests", () => {
       })
     ).toEqual({
       value: 1,
+      step1Completed: false,
+      passwordError: false,
     });
   });
 
@@ -34,6 +38,8 @@ describe("stepperReducer tests", () => {
       })
     ).toEqual({
       value: -1,
+      step1Completed: false,
+      passwordError: false,
     });
   });
 
@@ -44,6 +50,8 @@ describe("stepperReducer tests", () => {
       })
     ).toEqual({
       value: 0,
+      step1Completed: false,
+      passwordError: false,
     });
   });
 });

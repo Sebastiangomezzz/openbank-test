@@ -18,7 +18,7 @@ function render(
   ui: React.ReactElement,
   {
     preloadedState = {
-      stepper:{value: 0 }
+      stepper: { value: 0, step1Completed: false, passwordError: false },
     },
     store = configureStore({
       reducer: { stepper: stepperReducer },

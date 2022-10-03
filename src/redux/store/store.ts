@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import stepperReducer from "../features/stepperSlice";
+import stepperReducer from '../features/stepperSlice';
 
 const reducers = combineReducers({
   stepper: stepperReducer,
