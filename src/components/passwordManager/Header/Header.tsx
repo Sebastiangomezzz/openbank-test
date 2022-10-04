@@ -10,7 +10,7 @@ import { RootState } from "../../../redux/store";
 import styles from "./Header.module.scss";
 
 export const Header = (): JSX.Element => {
-  const step = useSelector((state: RootState) => state.stepper.value);
+  const step = useSelector((state: RootState) => state.passwordManager.stepperValue);
 
   return (
     <div className={styles.container}>

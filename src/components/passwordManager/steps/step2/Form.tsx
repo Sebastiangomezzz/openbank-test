@@ -15,7 +15,9 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import {
   decrementStep,
-} from "../../../../redux/features/stepperSlice";
+  resetStepsCompletion,
+  setStepsCompletion,
+} from "../../../../redux/features/passwordManagerSlice";
 //Styles
 import styles from "./Form.module.scss";
 //Validators
@@ -37,7 +39,7 @@ export const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isLoading, submitPasswordMutation } = useSubmitPasswordMutation();
-  
+
   const {
     register,
     handleSubmit,
@@ -49,13 +51,15 @@ export const Form = () => {
 
   const onSubmit = useCallback(
     (data: FormData) => {
+      dispatch(setStepsCompletion());
       submitPasswordMutation.mutate(data.password);
     },
-    [submitPasswordMutation]
+    [submitPasswordMutation, dispatch]
   );
 
   const handleNavigateBack = useCallback(() => {
     dispatch(decrementStep());
+    dispatch(resetStepsCompletion());
     navigate("/");
   }, [navigate, dispatch]);
 

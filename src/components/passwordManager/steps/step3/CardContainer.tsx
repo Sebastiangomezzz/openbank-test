@@ -9,21 +9,25 @@ import WarningAmberTwoToneIcon from "@mui/icons-material/WarningAmberTwoTone";
 import CheckCircleTwoToneIcon from "@mui/icons-material/CheckCircleTwoTone";
 //redux
 import { useDispatch } from "react-redux";
-import { resetSteps } from "../../../../redux/features/stepperSlice";
+import {
+  resetSteps,
+  resetStepsCompletion,
+} from "../../../../redux/features/passwordManagerSlice";
 //locale
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 //Styles
-import styles from './CardContainer.module.scss';
+import styles from "./CardContainer.module.scss";
 interface CardContainerProps {
   error?: boolean;
 }
 
-export const CardContainer = ({ error }:CardContainerProps) => {
+export const CardContainer = ({ error }: CardContainerProps) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { t } = useTranslation('translation');
+  const { t } = useTranslation("translation");
 
   const handleNavigateBack = useCallback(() => {
+    dispatch(resetStepsCompletion());
     dispatch(resetSteps());
     navigate("/");
   }, [navigate, dispatch]);

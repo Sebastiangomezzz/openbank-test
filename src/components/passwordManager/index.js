@@ -1,3 +1,2 @@
-export * from './steps/step1';
-export * from './steps/step2';
-export * from './steps/step3';
+export * from "./steps";
+export * from "./Header";

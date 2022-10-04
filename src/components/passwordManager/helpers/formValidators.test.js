@@ -5,6 +5,9 @@ import {
 import { renderHook} from "@testing-library/react-hooks";
 import { useTranslation } from "react-i18next";
 
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({ t: (key) => key }),
+}));
 describe("formValidators tests", () => {
   test("passwordValidator should return correct object", () => {
     const { result } = renderHook(() => useTranslation());
