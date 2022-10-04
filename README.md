@@ -19,6 +19,7 @@ It is a simple web application that uses the following technologies:
 ## App description
 
 The app is a wizzard that allows the user to create a password. <br>
+If you try to access a page that doesn't exist or you try to access a page without having completed the previous step, you will be redirected to the first step of the wizzard. <br>
 
 ### First step
 At the landing, the user will be asked to check a checkbox with a tooltip and confirm that he/she accepts the service terms. Once checked, the button to next view will be enabled.<br>
