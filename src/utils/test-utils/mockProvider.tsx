@@ -3,7 +3,7 @@ import { render as rtlRender } from "@testing-library/react";
 import type { RenderOptions } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { configureStore, PreloadedState } from "@reduxjs/toolkit";
-import stepperReducer from "../../redux/features/stepperSlice";
+import passwordManagerReducer from "../../redux/features/passwordManagerSlice";
 import { store, RootState } from "../../redux/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -18,10 +18,17 @@ function render(
   ui: React.ReactElement,
   {
     preloadedState = {
-      stepper: { value: 0, step1Completed: false, passwordError: false },
+      passwordManager: {
+        stepperValue: 0,
+        stepsCompletion: {
+          currStep: 1,
+          prevCompleted: false,
+        },
+        passwordError: false,
+      },
     },
     store = configureStore({
-      reducer: { stepper: stepperReducer },
+      reducer: { passwordManager: passwordManagerReducer },
       preloadedState,
     }),
     ...renderOptions
@@ -38,5 +45,5 @@ function render(
 }
 
 export * from "@testing-library/react";
-export {renderHook} from "@testing-library/react-hooks";
+export { renderHook } from "@testing-library/react-hooks";
 export { render };

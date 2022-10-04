@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
 import { MockResult, submitForm } from "../../../services/passwordApi";
-import { incrementStep } from "../../../redux/features/stepperSlice";
+import { incrementStep } from "../../../redux/features/passwordManagerSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setPasswordError } from "../../../redux/features/stepperSlice";
+import { setPasswordError } from "../../../redux/features/passwordManagerSlice";
 
 export const useSubmitPasswordMutation = () => {
   const navigate = useNavigate();

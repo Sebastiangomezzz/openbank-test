@@ -8,7 +8,7 @@ import CardHeader from "@mui/material/CardHeader";
 import WarningAmberTwoToneIcon from "@mui/icons-material/WarningAmberTwoTone";
 //redux
 import { useDispatch } from "react-redux";
-import { resetSteps } from "../../../redux/features/stepperSlice";
+import { resetSteps } from "../../../redux/features/passwordManagerSlice";
 //locale
 import { useTranslation } from "react-i18next";
 import styles from "./Error404.module.scss";

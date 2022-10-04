@@ -1,4 +1,4 @@
-import stepperReducer from "./stepperSlice";
+import stepperReducer from "./passwordManagerSlice";
 import "@testing-library/jest-dom/extend-expect";
 
 jest.mock("react-router-dom", () => ({

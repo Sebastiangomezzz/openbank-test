@@ -1,8 +1,8 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import stepperReducer from '../features/stepperSlice';
+import passwordManagerReducer from "../features/passwordManagerSlice";
 
 const reducers = combineReducers({
-  stepper: stepperReducer,
+  passwordManager: passwordManagerReducer,
 });
 
 export const store = configureStore({

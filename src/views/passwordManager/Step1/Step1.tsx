@@ -4,14 +4,19 @@ import { TermsAndConditionsCheckbox } from "../../../components/passwordManager/
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { incrementStep } from "../../../redux/features/stepperSlice";
+import {
+  incrementStep,
+  setStepsCompletion,
+} from "../../../redux/features/passwordManagerSlice";
 
 export const Step1 = () => {
   const { t } = useTranslation('translation');
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleNavigate = useCallback(() => {
     dispatch(incrementStep());
+    dispatch(setStepsCompletion());
     navigate("/create_password");
   }, [navigate, dispatch]);
 
