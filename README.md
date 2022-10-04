@@ -28,13 +28,16 @@ The second view is a form that asks for a password, a confirmation of the passwo
 ### Third step
 The third view will show a success message or a error message depending on the password used in the previous step. To trigger the error message/view, the password must be "pruebaKO123". Any other password created will trigger the success message/view. The button in this view will take to the landing.<br>
 
+### Error view
+This view is displayed when the user tries to access a route that does not exist. It has a button that takes the user to the landing.<br>
+
 ## Folder structure
 
 The project source root contains the following folders/files:
-- **components**: Contains all the components used in the app. It is divided in common and passwordManager folders. The common folder contains the components that are used in more than one view. The passwordManager folder contains the components that are used only in one of the three steps.
-- **hooks**: Contains all the custom hooks used in the app.
-- **views**: Contains all the views used in the app.
-- **redux**: Contains two folders, the features with the slices (stepperSlice) of the state and the store one, with the configuration for the app.
+- **components**: Contains all the components used in the app. It is divided in common and passwordManager folders. The common folder contains the components that are used in more than one view. The passwordManager folder contains the components that are used only in one of the three steps. Each presentational component has its own folder with the component, the styles and the tests. 
+- **views**: Contains all the views used in the app, each one in a folder with the same name. There's two folders in this case, one for passwordManager and one for errors views. The passwordManager folder contains the three views of the app. The errors folder contains the error views, in this case one for Error404. Each folder contains the view, the styles and the tests.
+- **hooks**: Contains all the custom hooks used in the app, in this case just one, useSubmitPasswordMutation. This hook is used in the second view to submit the password and get the result. It wraps a react-query mutation and the call to the API and returns isLoading and the submitPasswordMutation function. The folder contains the hooks and the tests for them.
+- **redux**: Contains two folders, the features with the slices (passwordManagerSlice) of the state and the store one, with the configuration for the app.
 - **services**: Contains the service used to check the password, the passwordApi.
 - **utils**: Contains the utils used in the app, in this case a folder named test-utils with a mockProvider inside, used for testing.
 - **i18n**: Contains the configuration for the internationalization.
@@ -65,4 +68,4 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ### `npm coverage`
 
 Launches the test runner in the interactive watch mode and generates a test coverage file.<br>
-
+You can see the coverage report in the coverage folder.
