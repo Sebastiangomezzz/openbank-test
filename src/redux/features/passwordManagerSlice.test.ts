@@ -1,4 +1,4 @@
-import stepperReducer from "./passwordManagerSlice";
+import passwordManagerReducer from "./passwordManagerSlice";
 import "@testing-library/jest-dom/extend-expect";
 
 jest.mock("react-router-dom", () => ({
@@ -10,47 +10,59 @@ jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-describe("stepperReducer tests", () => {
-  it("should return the initial state", () => {
-    expect(stepperReducer(undefined, { type: "" })).toEqual({
-      value: 0,
-      step1Completed: false,
+describe("passwordManagerReducer tests", () => {
+  test("should return the initial state", () => {
+    expect(passwordManagerReducer(undefined, { type: "" })).toEqual({
+      stepperValue: 0,
+      stepsCompletion: {
+        currStep: 1,
+        prevCompleted: false,
+      },
       passwordError: false,
     });
   });
 
-  it("should handle incrementStep", () => {
+  test("should handle incrementStep", () => {
     expect(
-      stepperReducer(undefined, {
-        type: "stepper/incrementStep",
+      passwordManagerReducer(undefined, {
+        type: "passwordManager/incrementStep",
       })
     ).toEqual({
-      value: 1,
-      step1Completed: false,
+      stepperValue: 1,
+      stepsCompletion: {
+        currStep: 1,
+        prevCompleted: false,
+      },
       passwordError: false,
     });
   });
 
-  it("should handle decrementStep", () => {
+  test("should handle decrementStep", () => {
     expect(
-      stepperReducer(undefined, {
-        type: "stepper/decrementStep",
+      passwordManagerReducer(undefined, {
+        type: "passwordManager/decrementStep",
       })
     ).toEqual({
-      value: -1,
-      step1Completed: false,
+      stepperValue: -1,
+      stepsCompletion: {
+        currStep: 1,
+        prevCompleted: false,
+      },
       passwordError: false,
     });
   });
 
-  it("should handle resetSteps", () => {
+  test("should handle resetSteps", () => {
     expect(
-      stepperReducer(undefined, {
-        type: "stepper/resetSteps",
+      passwordManagerReducer(undefined, {
+        type: "passwordManager/resetSteps",
       })
     ).toEqual({
-      value: 0,
-      step1Completed: false,
+      stepperValue: 0,
+      stepsCompletion: {
+        currStep: 1,
+        prevCompleted: false,
+      },
       passwordError: false,
     });
   });
